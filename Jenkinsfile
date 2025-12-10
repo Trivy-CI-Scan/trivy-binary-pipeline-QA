@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     environment {
-        TRIVY_SCAN_TARGET = "${env.WORKSPACE}/debian.tar"
+        TRIVY_SCAN_TARGET = "${env.WORKSPACE}/image1.tar"
+    }
+    triggers {
+        cron '20 03 * * 1-5' // Runs at 03:20 on every day-of-week from Monday through Friday
     }
 
     stages {
